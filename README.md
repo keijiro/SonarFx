@@ -7,3 +7,9 @@ all surfaces in the scene.
 ![screencast](http://keijiro.github.io/SonarFx/screencast.gif)
 
 It is implemented as a replacement shader and runs on Unity Basic (Unity Free).
+
+License
+-------
+
+Provided under the MIT license. See the comment in the sourcecode for further
+information.
