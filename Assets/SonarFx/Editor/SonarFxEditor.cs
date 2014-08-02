@@ -35,6 +35,7 @@ public class SonarFxEditor : Editor
     SerializedProperty propWaveExponent;
     SerializedProperty propWaveInterval;
     SerializedProperty propWaveSpeed;
+    SerializedProperty propAddColor;
 
     void OnEnable()
     {
@@ -47,6 +48,7 @@ public class SonarFxEditor : Editor
         propWaveExponent  = serializedObject.FindProperty("_waveExponent");
         propWaveInterval  = serializedObject.FindProperty("_waveInterval");
         propWaveSpeed     = serializedObject.FindProperty("_waveSpeed");
+        propAddColor      = serializedObject.FindProperty("_addColor");
     }
 
     public override void OnInspectorGUI()
@@ -67,13 +69,20 @@ public class SonarFxEditor : Editor
 
         EditorGUI.indentLevel--;
 
-        EditorGUILayout.PropertyField(propBaseColor);
-        EditorGUILayout.PropertyField(propWaveColor);
+        EditorGUILayout.LabelField("Base Color");
+        EditorGUI.indentLevel++;
+        EditorGUILayout.PropertyField(propBaseColor, new GUIContent("Albedo"));
+        EditorGUILayout.PropertyField(propAddColor, new GUIContent("Emission"));
+        EditorGUI.indentLevel--;
 
-        EditorGUILayout.PropertyField(propWaveAmplitude);
-        EditorGUILayout.PropertyField(propWaveExponent);
-        EditorGUILayout.PropertyField(propWaveInterval);
-        EditorGUILayout.PropertyField(propWaveSpeed);
+        EditorGUILayout.LabelField("Wave Parameters");
+        EditorGUI.indentLevel++;
+        EditorGUILayout.PropertyField(propWaveColor, new GUIContent("Color"));
+        EditorGUILayout.PropertyField(propWaveAmplitude, new GUIContent("Amplitude"));
+        EditorGUILayout.PropertyField(propWaveExponent, new GUIContent("Exponent"));
+        EditorGUILayout.PropertyField(propWaveInterval, new GUIContent("Interval"));
+        EditorGUILayout.PropertyField(propWaveSpeed, new GUIContent("Speed"));
+        EditorGUI.indentLevel--;
         
         serializedObject.ApplyModifiedProperties();
     }

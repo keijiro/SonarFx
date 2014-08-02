@@ -22,6 +22,7 @@
 //
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class SonarFx : MonoBehaviour
 {
     // Sonar mode (directional or spherical)
@@ -61,12 +62,17 @@ public class SonarFx : MonoBehaviour
     [SerializeField] float _waveSpeed = 10.0f;
     public float waveSpeed { get { return _waveSpeed; } set { _waveSpeed = value; } }
 
+    // Additional color (emission)
+    [SerializeField] Color _addColor = Color.black;
+    public Color addColor { get { return _addColor; } set { _addColor = value; } }
+
     // Private shader variables
     Shader shader;
     int baseColorID;
     int waveColorID;
     int waveParamsID;
     int waveVectorID;
+    int addColorID;
 
     void Awake()
     {
@@ -75,6 +81,7 @@ public class SonarFx : MonoBehaviour
         waveColorID = Shader.PropertyToID("_SonarWaveColor");
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
         waveVectorID = Shader.PropertyToID("_SonarWaveVector");
+        addColorID = Shader.PropertyToID("_SonarAddColor");
     }
 
     void OnEnable()
@@ -92,6 +99,7 @@ public class SonarFx : MonoBehaviour
     {
         Shader.SetGlobalColor(baseColorID, _baseColor);
         Shader.SetGlobalColor(waveColorID, _waveColor);
+        Shader.SetGlobalColor(addColorID, _addColor);
 
         var param = new Vector4(_waveAmplitude, _waveExponent, _waveInterval, _waveSpeed);
         Shader.SetGlobalVector(waveParamsID, param);
