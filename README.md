@@ -1,8 +1,8 @@
 SonarFx
 =======
 
-SonarFx is a full-screen effect for Unity. It renders wave-like patterns on the
-all surfaces in the scene.
+SonarFx is a full-screen effect for Unity. It renders animated wave-like
+patterns on the all surfaces in the scene.
 
 ![screencast](http://keijiro.github.io/SonarFx/screencast.gif)
 
