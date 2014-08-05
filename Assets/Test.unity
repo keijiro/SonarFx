@@ -316,6 +316,7 @@ MonoBehaviour:
   _waveInterval: 20
   _waveSpeed: 10
   _addColor: {r: 0, g: 0, b: 0, a: 1}
+  shader: {fileID: 4800000, guid: 6d12e7ab487bf49d18b89038af741a18, type: 3}
 --- !u!114 &768017763
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -66,8 +66,10 @@ public class SonarFx : MonoBehaviour
     [SerializeField] Color _addColor = Color.black;
     public Color addColor { get { return _addColor; } set { _addColor = value; } }
 
+    // Reference to the shader.
+    [SerializeField] Shader shader;
+
     // Private shader variables
-    Shader shader;
     int baseColorID;
     int waveColorID;
     int waveParamsID;
@@ -76,7 +78,6 @@ public class SonarFx : MonoBehaviour
 
     void Awake()
     {
-        shader = Shader.Find("Hidden/SonarFX");
         baseColorID = Shader.PropertyToID("_SonarBaseColor");
         waveColorID = Shader.PropertyToID("_SonarWaveColor");
         waveParamsID = Shader.PropertyToID("_SonarWaveParams");
