@@ -61,8 +61,9 @@ Shader "Hidden/SonarFX"
             // Moving wave.
             w -= _Time.y * _SonarWaveParams.w;
 
-            // Divide with the interval.
-            w = mod(w, _SonarWaveParams.z) / _SonarWaveParams.z;
+            // Get modulo (w % params.z / params.z)
+            w /= _SonarWaveParams.z;
+            w = w - floor(w);
 
             // Make the gradient steeper.
             float p = _SonarWaveParams.y;
